@@ -6,7 +6,7 @@
 /*   By: verosvec <verosvec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 21:39:11 by verosvec          #+#    #+#             */
-/*   Updated: 2026/09/18 22:07:48 by verosvec         ###   ########.fr       */
+/*   Updated: 2026/09/19 22:45:50 by verosvec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_test_case
 	char	*input;
 }	t_test_case;
 
+size_t	reference_strlcpy(char *dst, const char *src, size_t siz);
 void	test_ft_strlen(void);
 void	test_ft_memset(void);
 void	test_ft_isalpha(void);
@@ -42,5 +43,6 @@ void	test_ft_memchr(void);
 void	test_ft_memcmp(void);
 void	test_ft_strchr(void);
 void	test_ft_strrchr(void);
+void	test_ft_strlcpy(void);
 
 #endif
