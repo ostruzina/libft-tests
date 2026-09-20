@@ -6,7 +6,7 @@
 /*   By: verosvec <verosvec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 20:10:16 by verosvec          #+#    #+#             */
-/*   Updated: 2026/09/19 21:49:00 by verosvec         ###   ########.fr       */
+/*   Updated: 2026/09/20 19:15:37 by verosvec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ int	main(void)
 	test_ft_strchr();
 	test_ft_strrchr();
 	test_ft_strlcpy();
+	test_ft_strlcat();
+	test_ft_strncmp();
 	return (0);
 }
