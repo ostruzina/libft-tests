@@ -9,17 +9,29 @@ void	test_ft_atoi(void)
 		{"explicit plus sign", "+789"},
 		{"trailing non-digit characters", "42hello123"},
 		{"multiple signs (should return 0)", "--42"},
+		{"plus then minus (should return 0)", "+-42"},
 		{"zero value", "0"},
+		{"negative zero", "-0"},
 		{"non-digit start", "hello 42"},
 		{"INT_MIN", "-2147483648"},
-		{"INT_MAX", "2147483647"}
+		{"INT_MAX", "2147483647"},
+		{"one past INT_MAX (wraparound)", "2147483648"},
+		{"one before INT_MIN (wraparound)", "-2147483649"},
+		{"empty string", ""},
+		{"minus sign only, no digits", "-"},
+		{"plus sign only, no digits", "+"},
+		{"whitespace only, no digits", "   "},
+		{"vertical tab prefix", "\v42"},
+		{"form feed prefix", "\f42"},
+		{"leading zeros", "007"},
+		{"leading zeros, negative", "-007"}
 	};
-	size_t	test_count;
-	size_t	pass_count;
-	size_t	fail_count;
-	size_t	i;
-	int		res_lib;
-	int		res_ft;
+	size_t		test_count;
+	size_t		pass_count;
+	size_t		fail_count;
+	size_t		i;
+	int			res_lib;
+	int			res_ft;
 
 	test_count = sizeof(cases) / sizeof(cases[0]);
 	pass_count = 0;
