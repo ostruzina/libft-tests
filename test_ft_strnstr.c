@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   test_ft_strnstr.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: verosvec <verosvec@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/20 19:50:00 by verosvec          #+#    #+#             */
-/*   Updated: 2026/09/20 21:03:13 by verosvec         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "tests.h"
 
 void	test_ft_strnstr(void)
@@ -23,14 +11,15 @@ void	test_ft_strnstr(void)
 		{"partial match cut off by len", NULL},
 		{"search past null terminator", NULL},
 		{"len is zero", NULL},
-		{"backwards-sensitive underflow", NULL}
+		{"exact-length match, needle fits precisely within len", NULL}
 	};
-	size_t	test_count;
-	size_t	pass_count;
-	size_t	fail_count;
-	size_t	i;
-	char	*ret_lib;
-	char	*ret_ft;
+	size_t		test_count;
+	size_t		pass_count;
+	size_t		fail_count;
+	size_t		i;
+	char		*ret_lib;
+	char		*ret_ft;
+	int			match;
 
 	test_count = sizeof(cases) / sizeof(cases[0]);
 	pass_count = 0;
@@ -74,31 +63,36 @@ void	test_ft_strnstr(void)
 		}
 		else if (i == 6)
 		{
-			// Search bounds past '\0' byte
+			// Search must not go past the embedded '\0' byte, even
+			// though "world" is still physically present in memory
 			ret_lib = bsd_strnstr("hello\0world", "world", 11);
 			ret_ft = ft_strnstr("hello\0world", "world", 11);
 		}
 		else if (i == 7)
 		{
-			// Edge case A: Zero length search
+			// Edge case: zero-length search
 			ret_lib = bsd_strnstr("hello world", "hello", 0);
 			ret_ft = ft_strnstr("hello world", "hello", 0);
 		}
 		else if (i == 8)
 		{
-			// Edge case B: Full match within len using backwards-sensitive underflow
+			// Needle fits exactly within len, no truncation
 			ret_lib = bsd_strnstr("hello world", "hello", 5);
 			ret_ft = ft_strnstr("hello world", "hello", 5);
 		}
-		if (ret_lib == ret_ft)
+		match = (ret_lib == NULL && ret_ft == NULL)
+			|| (ret_lib != NULL && ret_ft != NULL
+				&& strcmp(ret_lib, ret_ft) == 0);
+		if (match)
 		{
 			printf("PASS: %s\n", cases[i].label);
 			pass_count++;
 		}
 		else
 		{
-			printf("FAIL: %s (expected %p, got %p)\n",
-				cases[i].label, (void *)ret_lib, (void *)ret_ft);
+			printf("FAIL: %s (expected %s, got %s)\n",
+				cases[i].label, ret_lib ? ret_lib : "(null)",
+				ret_ft ? ret_ft : "(null)");
 			fail_count++;
 		}
 		i++;
