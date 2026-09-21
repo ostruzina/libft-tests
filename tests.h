@@ -6,7 +6,7 @@
 /*   By: verosvec <verosvec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 21:39:11 by verosvec          #+#    #+#             */
-/*   Updated: 2026/09/20 22:42:34 by verosvec         ###   ########.fr       */
+/*   Updated: 2026/09/21 15:11:30 by verosvec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void	test_ft_strlcat(void);
 void	test_ft_strncmp(void);
 void	test_ft_strnstr(void);
 void	test_ft_atoi(void);
+void	test_ft_calloc(void);
 
 #endif
