@@ -6,7 +6,7 @@
 /*   By: verosvec <verosvec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 20:10:16 by verosvec          #+#    #+#             */
-/*   Updated: 2026/09/21 21:06:21 by verosvec         ###   ########.fr       */
+/*   Updated: 2026/09/22 18:19:13 by verosvec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int	main(void)
 	test_ft_strjoin();
 	test_ft_put_fd();
 	test_ft_strm_iter();
+	test_ft_strtrim();
 	return (0);
 }
